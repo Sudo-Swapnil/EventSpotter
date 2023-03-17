@@ -1,0 +1,43 @@
+.form-bg{
+    /* background-color: red; */
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.form-begin {
+    border-top: 1px solid white;
+    padding-top: 2%;
+}
+
+.btn-orange {
+    background-color: orangered;
+}
+
+.btn-orange:hover {
+    background-color: rgb(244, 123, 80);
+    
+}
+
+.btn-blue {
+    background-color: rgb(12, 144, 215);
+}
+
+.btn-blue:hover {
+    background-color: rgb(115, 167, 195);
+}
+
+.form-title {
+    font-size: 2em;
+}
+
+#event-search {
+    color: white;
+    margin-bottom: 0.5em;
+}
+
+.required-field::after {
+    margin-left: 0.2rem;
+    content: "*";
+    color: red;
+}

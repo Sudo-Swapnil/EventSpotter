@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+body{
+    background-image: url("./assets/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.navbar .nav-item .active {
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.events-form-labels {
+    color: #88bfda;
+    font-family: Trebuchet MS;
+}
+
