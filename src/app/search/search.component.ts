@@ -9,15 +9,25 @@ import { NgForm } from '@angular/forms';
 })
 export class SearchComponent {
   formValues = {
-    keyword: ''
+    keyword: '',
+    distance: '',
+    location: '',
+    category: 'Default'
   }
 
   constructor (private http: HttpClient) {}
 
   submitForm(form: NgForm){
     this.formValues.keyword = form.value.keyword;
-    console.log("name value: ", this.formValues.keyword)
-    this.makeGetRequest();
+    this.formValues.location = form.value.location;
+    this.formValues.category = form.value.category;
+    this.formValues.distance = form.value.distance;
+
+    console.log("Keyword value: ", this.formValues.keyword)
+    console.log("Location value: ", this.formValues.location)
+    console.log("Category value: ", this.formValues.category)
+    console.log("Distance value: ", this.formValues.distance)
+    // this.makeGetRequest();
   }
 
   makeGetRequest(){
