@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center mt-5">
+    <table class="mt-4 table table-dark table-striped" id="events-table">
+        <thead>
+          <tr>
+            <th>Date/Time</th>
+            <th>Icon</th>
+            <th>Event</th>
+            <th>Genre</th>
+            <th>Venue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of eventsTableData">
+            <td>{{ row.column1 }}</td>
+            <td>{{ row.column2 }}</td>
+            <td>{{ row.column3 }}</td>
+          </tr>
+        </tbody>
+    </table>
+      
+</div>

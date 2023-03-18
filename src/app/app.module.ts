@@ -7,13 +7,15 @@ import { SearchComponent } from './search/search.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EventsTableComponent } from './events-table/events-table.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    FavouritesComponent
+    FavouritesComponent,
+    EventsTableComponent
   ],
   imports: [
     BrowserModule,
