@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http'
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -8,33 +8,32 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-  formValues = {
-    keyword: '',
-    distance: '',
-    location: '',
-    category: 'Default'
+
+  eventsForm: FormGroup;
+
+  ngOnInit(){
+    this.eventsForm = new FormGroup({
+      keyword: new FormControl(),
+      distance: new FormControl(),
+      location: new FormControl(),
+      category: new FormControl(),
+      checkbox: new FormControl()
+    });
+    // this.eventsForm.controls['keyword'].valueChanges
   }
 
   eventsTableData: any;
 
   constructor (private http: HttpClient) {}
 
-  submitForm(form: NgForm){
-    this.formValues.keyword = form.value.keyword;
-    this.formValues.location = form.value.location;
-    this.formValues.category = form.value.category;
-    this.formValues.distance = form.value.distance;
-
-    console.log("Keyword value: ", this.formValues.keyword)
-    console.log("Location value: ", this.formValues.location)
-    console.log("Category value: ", this.formValues.category)
-    console.log("Distance value: ", this.formValues.distance)
-    this.makeGetRequest();
+  submitForm(){
+    console.log(this.eventsForm.value);
+    console.log(this.eventsForm.value.location)
+    this.makeGetRequest()
   }
 
-  makeGetRequest(){
 
-    
+  makeGetRequest(){
     // let reqParams = new HttpParams().set('name', this.formValues.keyword);
     // console.log("From makeGetRequest function: ", reqParams)
     // let url = "localhost:3000/api/tkm" + reqParams.toString()

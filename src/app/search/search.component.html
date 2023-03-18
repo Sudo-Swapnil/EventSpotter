@@ -1,25 +1,25 @@
 <div class="container mt-5">
 
-    <form #eventsFrom="ngForm" (submit)="submitForm(eventsFrom)">
+    <form [formGroup]="eventsForm" (ngSubmit)="submitForm()">
     <div class="col col-8 form-bg offset-2 px-3 pb-4">
         <div class="row text-center px-3 form-title pt-4 hr-event-search1">
             <span id="event-search">Events Search</span>
         </div>
         <div class="form-group mb-3 form-begin">
             <label for="keyword" class="form-label required-field events-form-labels">Keyword</label>
-            <input type="text" class="form-control" name="keyword" [(ngModel)]="formValues.keyword">
+            <input type="text" class="form-control" formControlName="keyword">
         </div>
 
         <div class="row">
             <div class="form-group mb-3 col-md-8 col-12">
                 <label for="distance" class="form-label events-form-labels">Distance</label>
-                <input type="number" class="form-control" name="distance" [(ngModel)]="formValues.distance">
+                <input type="number" class="form-control" formControlName="distance">
             </div>
     
             <div class="form-group mb-3 col-md-3 col-9">
                 <label for="category" class="form-label required-field events-form-labels">Category</label>
                 
-                <select class="form-select" name="category" [(ngModel)]="formValues.category">
+                <select class="form-select" formControlName="category">
                     <option selected>Default</option>
                     <option>Music</option>
                     <option>Sports</option>
@@ -34,11 +34,11 @@
 
         <div class="form-group mb-3">
             <label for="location" class="form-label required-field events-form-labels">Location</label>
-            <input type="text" class="form-control" name="location" [(ngModel)]="formValues.location">
+            <input type="text" class="form-control" formControlName="location">
         </div>
 
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input">
+            <input type="checkbox" class="form-check-input" formControlName="checkbox">
             <label class="form-check-label events-form-labels" for="check-location">Auto-detect your location</label>
         </div>
 
