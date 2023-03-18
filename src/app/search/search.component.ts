@@ -56,7 +56,7 @@ export class SearchComponent {
     // console.log("Request complete...")
 
     console.log("Making request...")
-    let result = this.http.get('http://localhost:3000/test/')
+    let result = this.http.get('http://localhost:3000/test/sort')
     console.log(result.subscribe((data) => {
       console.log(data)
       this.eventsTableData = data
