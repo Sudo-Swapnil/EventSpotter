@@ -1,30 +1,82 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { FormGroup, FormControl } from '@angular/forms';
+
+import { debounceTime, tap, switchMap, finalize, distinctUntilChanged, filter } from 'rxjs/operators';
+
+const API_KEY = "ded27983"
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit{
 
-  eventsForm: FormGroup;
+  filteredEvents: any;
+  isLoading = false;
+  errorMsg: string;
+  minLength = 3;
+  selectedEvent: any = "";
 
-  ngOnInit(){
-    this.eventsForm = new FormGroup({
-      keyword: new FormControl(),
-      distance: new FormControl(),
-      location: new FormControl(),
-      category: new FormControl(),
-      checkbox: new FormControl()
+  constructor (private http: HttpClient) {}
+
+  
+  eventsForm = new FormGroup({
+    keyword: new FormControl(),
+    distance: new FormControl(),
+    location: new FormControl(),
+    category: new FormControl(),
+    checkbox: new FormControl()
+  });
+
+
+  onSelectedEvent(){
+    console.log(this.selectedEvent);
+    this.selectedEvent = this.selectedEvent;
+  }
+
+  displayWith(value: any) {
+    return value?.Title;
+  }
+
+  ngOnInit(){  
+
+    this.eventsForm.controls['keyword'].valueChanges
+    .pipe(
+      filter(res => {
+        return res !== null && res.length >= this.minLength
+      }),
+      distinctUntilChanged(),
+      debounceTime(1000),
+      tap(() => {
+        this.errorMsg = "";
+        this.filteredEvents = [];
+        this.isLoading = true;
+      }),
+      switchMap(value => this.http.get('http://www.omdbapi.com/?apikey=' + API_KEY + '&s=' + value)
+        .pipe(
+          finalize(() => {
+            this.isLoading = false
+          }),
+        )
+      )
+    )
+    .subscribe((data: any) => {
+      if (data['Search'] == undefined) {
+        this.errorMsg = data['Error'];
+        this.filteredEvents = [];
+      } else {
+        this.errorMsg = "";
+        this.filteredEvents = data['Search'];
+      }
+      console.log(this.filteredEvents);
     });
-    // this.eventsForm.controls['keyword'].valueChanges
   }
 
   eventsTableData: any;
 
-  constructor (private http: HttpClient) {}
+
 
   submitForm(){
     console.log(this.eventsForm.value);

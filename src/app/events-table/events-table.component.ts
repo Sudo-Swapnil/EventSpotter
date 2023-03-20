@@ -8,4 +8,11 @@ import { Component, Input } from '@angular/core';
 export class EventsTableComponent {
   @Input() eventsTableData: any;
 
+  // fun(row)
+  // call api using row.id information
+  // data <- from API
+  // show_card = false initially
+  // if data then show_card = true
+  //  
+
 }
