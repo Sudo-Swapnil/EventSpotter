@@ -13,8 +13,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //for autocomplete importing thing from material..
 import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete'
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
+import { CardComponent } from './card/card.component'
 
+//for angular material tabs
+import { MatTabsModule } from '@angular/material/tabs'
 
 
 @NgModule({
@@ -22,7 +25,8 @@ import { MatInputModule } from '@angular/material/input'
     AppComponent,
     SearchComponent,
     FavouritesComponent,
-    EventsTableComponent
+    EventsTableComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ import { MatInputModule } from '@angular/material/input'
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

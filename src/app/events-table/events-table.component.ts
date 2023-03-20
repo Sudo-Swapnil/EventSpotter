@@ -8,6 +8,17 @@ import { Component, Input } from '@angular/core';
 export class EventsTableComponent {
   @Input() eventsTableData: any;
 
+  showCard = false;
+
+  onBackClick(value: boolean){
+    this.showCard = value
+    console.log("In parent component: got value: ", value)
+  }
+
+  onTableRowClick(){
+    this.showCard = true;
+  }
+
   // fun(row)
   // call api using row.id information
   // data <- from API

@@ -1,26 +1,32 @@
-
-<!-- *ngIf="!show_card" -->
-<div class="d-flex justify-content-center mt-5">
-    <table class="mt-4 table table-dark table-striped" id="events-table">
-        <thead>
-          <tr>
-            <th>Date/Time</th>
-            <th>Icon</th>
-            <th>Event</th>
-            <th>Genre</th>
-            <th>Venue</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of eventsTableData">
-            <td>{{ row.dates?.start?.localDate }}<br>{{ row.dates?.start?.localTime}}</td>
-            <td><img [src]="row.images[5].url" width="150"></td>
-            <td>{{ row.name }}</td>
-            <td>{{ row.classifications[0]?.segment?.name }}</td>
-            <td>{{ row._embedded?.venues[0]?.name }}</td>
-          </tr>
-        </tbody>
-    </table>
+<div class="mt-5">
+  <div *ngIf="!showCard">
+    <div class="d-flex justify-content-center">
+      <table class="mt-4 table table-dark table-striped" id="events-table">
+          <thead>
+            <tr>
+              <th>Date/Time</th>
+              <th>Icon</th>
+              <th>Event</th>
+              <th>Genre</th>
+              <th>Venue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of eventsTableData" (click)="onTableRowClick()">
+              <td>{{ row.dates?.start?.localDate }}<br>{{ row.dates?.start?.localTime}}</td>
+              <td><img [src]="row.images[5].url" width="150"></td>
+              <td>{{ row.name }}</td>
+              <td>{{ row.classifications[0]?.segment?.name }}</td>
+              <td>{{ row._embedded?.venues[0]?.name }}</td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  
+  
+  <!-- add card component selector based on show_card variable -->
+  <div *ngIf="showCard">
+    <app-card (backBtnClicked)="onBackClick($event)"></app-card>
+  </div>
 </div>
-
-<!-- add card component selector based on show_card variable -->

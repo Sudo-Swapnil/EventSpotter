@@ -1,0 +1,21 @@
+/* .material-tab{
+    background-color: aqua;
+}
+
+.material-tab-body {
+    background-color: red;
+}
+
+.mat-label-row{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.mat-tab-group .mat-tab-label {
+    color: red;
+  }
+ */
+
+ ::ng-deep .mat-tab-label-container{
+    color: white;
+ }
