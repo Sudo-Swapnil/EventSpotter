@@ -1,21 +1,72 @@
-/* .material-tab{
+.material-tab{
     background-color: aqua;
 }
 
-.material-tab-body {
+/* .material-tab-body {
     background-color: red;
-}
+} */
 
 .mat-label-row{
     margin-left: 1rem;
     margin-right: 1rem;
 }
 
-.mat-tab-group .mat-tab-label {
-    color: red;
-  }
- */
+.card-bg{
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    /* background-color: red; */
+}
 
- ::ng-deep .mat-tab-label-container{
+/* .mat-tab-group .mat-tab-label {
+    color: red;
+  } */
+
+  
+ /* ::ng-deep .mat-tab-label-container{
     color: white;
- }
+ } */
+
+.mdc-tab__text-label{
+color: white !important;
+}
+ 
+.mdc-tab__content{
+width: 6rem;
+}
+
+.mat-mdc-tab-labels{
+    background-color: rgb(0, 128, 113);
+}
+
+
+.card-title-div{
+    font-size: 2rem;
+}
+
+.bk-btn-link{
+    color: white;
+    text-decoration: underline;
+}
+
+.bk-btn-link:hover{
+    cursor: pointer;
+    color: white;
+}
+
+/* .non-favourite-icon{
+    padding: 20px;
+    background-color: antiquewhite;
+    border-radius: 50%;
+
+    box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: red;
+  padding: 2%;
+} */
+
+.red-icon svg {
+  fill: red;
+}

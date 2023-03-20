@@ -1,24 +1,35 @@
-<div class="bg-dark text-center text-white">
-    <h1>Card component in action</h1>
-    <a (click)="onBackBtnClick()">Click to show table</a>
-    <p>Below is material tab implementation</p>
+<div class="card-bg text-white">
 
+    <div class="card-header px-4 pt-3">
+        <div class="back-btn-div text-white">
+            <a (click)="onBackBtnClick()" class="bk-btn-link">Back</a>
+        </div>
+        <div class="pb-5 pt-2 text-center card-title-div">
+            <span>
+                Card title goes here
+                <mat-icon class="red-icon">favorite</mat-icon> 
+            </span>
+        </div>
+    </div>
+
+    
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-        <mat-tab label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Events&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">
+        <mat-tab label="Events">
+        
             <div class="material-tab-body">
                 Events Content
             </div>
         </mat-tab>
-        <mat-tab label="Artist/Teams">
+        <mat-tab label="Artist/Teams" class="text-white">
             <div class="material-tab-body">
                 Artist Content
             </div>
         </mat-tab>
-        <mat-tab label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Venue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">
+        <mat-tab label="Venue">
             <div class="material-tab-body">
                 Venue Content
             </div>
         </mat-tab>
     </mat-tab-group>
-    
+
 </div>

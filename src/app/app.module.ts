@@ -19,6 +19,10 @@ import { CardComponent } from './card/card.component'
 //for angular material tabs
 import { MatTabsModule } from '@angular/material/tabs'
 
+//icons
+import { MatIconModule } from '@angular/material/icon';
+
+
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import { MatTabsModule } from '@angular/material/tabs'
     MatAutocompleteModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
