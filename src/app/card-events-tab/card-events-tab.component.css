@@ -1,0 +1,27 @@
+.event-tab-labels{
+    color: aqua;
+    font-size: 1.3rem;
+}
+
+.twitter-icon{
+    color: #1DA1F2
+}
+
+.facebook-icon{
+    color: #4267B2
+}
+
+.share-on-text {
+    font-size: 1rem;
+}
+
+.events-card-api-text {
+    font-size: 1.15rem;
+}
+
+.basic-status-btn{
+    padding: 3px 11px;
+    border-radius: 7px;
+    background-color: green;
+    display: inline-block;
+}

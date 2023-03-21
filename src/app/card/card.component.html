@@ -7,7 +7,11 @@
         <div class="pb-5 pt-2 text-center card-title-div">
             <span>
                 Card title goes here
-                <mat-icon class="red-icon">favorite</mat-icon> 
+                <!-- <mat-icon class="red-icon">favorite</mat-icon>  -->
+                <div class="wrapper-favourite">
+                    <!-- <fa-icon [icon]="faHeart" class="fav-color"></fa-icon> -->
+                    <mat-icon class="red-icon">favorite</mat-icon> 
+                </div>
             </span>
         </div>
     </div>
@@ -17,7 +21,7 @@
         <mat-tab label="Events">
         
             <div class="material-tab-body">
-                Events Content
+                <app-card-events-tab></app-card-events-tab>
             </div>
         </mat-tab>
         <mat-tab label="Artist/Teams" class="text-white">

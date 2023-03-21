@@ -21,7 +21,10 @@ import { MatTabsModule } from '@angular/material/tabs'
 
 //icons
 import { MatIconModule } from '@angular/material/icon';
+import { CardEventsTabComponent } from './card-events-tab/card-events-tab.component';
 
+//fortawesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -30,7 +33,8 @@ import { MatIconModule } from '@angular/material/icon';
     SearchComponent,
     FavouritesComponent,
     EventsTableComponent,
-    CardComponent
+    CardComponent,
+    CardEventsTabComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MatIconModule
+    MatIconModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
