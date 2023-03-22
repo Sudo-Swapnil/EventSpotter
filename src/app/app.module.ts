@@ -25,6 +25,7 @@ import { CardEventsTabComponent } from './card-events-tab/card-events-tab.compon
 
 //fortawesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CardVenueTabComponent } from './card-venue-tab/card-venue-tab.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FavouritesComponent,
     EventsTableComponent,
     CardComponent,
-    CardEventsTabComponent
+    CardEventsTabComponent,
+    CardVenueTabComponent
   ],
   imports: [
     BrowserModule,
