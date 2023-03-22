@@ -67,8 +67,9 @@ width: 6rem;
   padding: 2%;
 } */
 
-.red-icon svg {
-  fill: red;
+.red-icon {
+    /* color: black; */
+    color: red;
 }
 
 .wrapper-favourite {
