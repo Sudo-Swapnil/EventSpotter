@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit{
     keyword: new FormControl(),
     distance: new FormControl(),
     location: new FormControl(),
-    category: new FormControl(),
+    category: new FormControl('Default'),
     checkbox: new FormControl()
   });
 
@@ -86,33 +86,19 @@ export class SearchComponent implements OnInit{
 
 
   makeGetRequest(){
-    // let reqParams = new HttpParams().set('name', this.formValues.keyword);
-    // console.log("From makeGetRequest function: ", reqParams)
-    // let url = "localhost:3000/api/tkm" + reqParams.toString()
-    
-    // console.log(reqParams)
-    // this.http.get('localhost:3000/api/tkm', { reqParams }).subscribe((data) => {
-    //   console.log(data);
-    // })
-
-
-    // console.log("Making request...")
-    // let params = new HttpParams();
-    // params = params.append('keyword', this.formValues.keyword)
-    // console.log('http://localhost:3000/api/tkm', {params})
-    // let result = this.http.get('http://localhost:3000/api/tkm', {params})
-    // console.log(result.subscribe((data) => {
-    //   console.log(data)
-    // }))
-    // console.log("Request complete...")
+    const formValues = this.eventsForm.value;
+    const queryParams = `?keyword=${formValues.keyword}&distance=${formValues.distance}&location=${formValues.location}&category=${formValues.category}&checkbox=${formValues.checkbox}`;
+    const url = `http://localhost:3000/api/getTableInformation${queryParams}`;
+    // const url = `dummy`;
+    console.log(url)
 
     console.log("Making request...")
-    let result = this.http.get('http://localhost:3000/test/sort')
+    // let result = this.http.get('http://localhost:3000/test/sort')
+    let result = this.http.get<any>(url)
     console.log(result.subscribe((data) => {
-      console.log(data)
+      console.log("This is the data: ", data)
       this.eventsTableData = data
     }))
     console.log("Request complete...")
-
   }
 }

@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class EventsTableComponent {
   @Input() eventsTableData: any;
 
-  showCard = true; // change to false later
+  showCard = false;
 
   onBackClick(value: boolean){
     this.showCard = value
