@@ -27,6 +27,7 @@ import { CardEventsTabComponent } from './card-events-tab/card-events-tab.compon
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CardVenueTabComponent } from './card-venue-tab/card-venue-tab.component';
 import { CardArtistsTabComponent } from './card-artists-tab/card-artists-tab.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { CardArtistsTabComponent } from './card-artists-tab/card-artists-tab.com
     ReactiveFormsModule,
     MatTabsModule,
     MatIconModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
