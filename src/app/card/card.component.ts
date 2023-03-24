@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, Output, EventEmitter, ViewEncapsulation, Input } from '@angular/core';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -10,9 +10,11 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 export class CardComponent {
   faHeart = faHeart
   @Output() backBtnClicked = new EventEmitter<boolean>();
+  @Input() sRowData: any;
   onBackBtnClick(){
+    console.log(this.sRowData)
     this.backBtnClicked.emit(false)
-    // console.log("Emitted value")
+    console.log("Emitted value")
   }
 
 }

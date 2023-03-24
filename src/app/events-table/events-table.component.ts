@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-events-table',
@@ -7,16 +7,21 @@ import { Component, Input } from '@angular/core';
 })
 export class EventsTableComponent {
   @Input() eventsTableData: any;
+  @Output() selectedRowData = new EventEmitter<any>();
 
   showCard = false;
-
+  slRowData: any;
   onBackClick(value: boolean){
     this.showCard = value
     console.log("In parent component: got value: ", value)
   }
 
-  onTableRowClick(){
+  onTableRowClick(rowData: any){
+    console.log(rowData)
+    this.slRowData = rowData
+    console.log("Setting card view ON")
     this.showCard = true;
+
   }
 
   // fun(row)

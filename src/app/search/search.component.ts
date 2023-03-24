@@ -88,8 +88,8 @@ export class SearchComponent implements OnInit{
   makeGetRequest(){
     const formValues = this.eventsForm.value;
     const queryParams = `?keyword=${formValues.keyword}&distance=${formValues.distance}&location=${formValues.location}&category=${formValues.category}&checkbox=${formValues.checkbox}`;
-    const url = `http://localhost:3000/api/getTableInformation${queryParams}`;
-    // const url = `dummy`;
+    // const url = `http://localhost:3000/api/getTableInformation${queryParams}`;
+    const url = `http://localhost:3000/test/sort`;
     console.log(url)
 
     console.log("Making request...")

@@ -12,7 +12,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let row of eventsTableData" (click)="onTableRowClick()">
+            <tr *ngFor="let row of eventsTableData" (click)="onTableRowClick(row)">
               <td>{{ row.dates?.start?.localDate }}<br>{{ row.dates?.start?.localTime}}</td>
               <td><img [src]="row.images[5].url" width="150"></td>
               <td>{{ row.name }}</td>
@@ -27,6 +27,6 @@
   
   <!-- add card component selector based on show_card variable -->
   <div *ngIf="showCard">
-    <app-card (backBtnClicked)="onBackClick($event)"></app-card>
+    <app-card [sRowData]="slRowData" (backBtnClicked)="onBackClick($event)"></app-card>
   </div>
 </div>
