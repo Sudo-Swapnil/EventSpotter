@@ -22,6 +22,21 @@
 .basic-status-btn{
     padding: 3px 11px;
     border-radius: 7px;
-    background-color: green;
     display: inline-block;
+}
+
+.btn-green{
+    background-color: green;
+}
+
+.btn-red{
+    background-color: red;
+}
+
+.btn-orange{
+    background-color: orange;
+}
+
+.btn-black{
+    background-color: black;
 }

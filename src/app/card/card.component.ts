@@ -12,9 +12,11 @@ export class CardComponent {
   @Output() backBtnClicked = new EventEmitter<boolean>();
   @Input() sRowData: any;
   eventId: string;
+  cardTitle: string;
 
   ngOnInit(){
     this.eventId = this.sRowData.id
+    this.cardTitle = this.sRowData.name
     // console.log("---- Event id ", this.eventId)
   }
 
