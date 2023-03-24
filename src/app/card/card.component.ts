@@ -11,6 +11,13 @@ export class CardComponent {
   faHeart = faHeart
   @Output() backBtnClicked = new EventEmitter<boolean>();
   @Input() sRowData: any;
+  eventId: string;
+
+  ngOnInit(){
+    this.eventId = this.sRowData.id
+    // console.log("---- Event id ", this.eventId)
+  }
+
   onBackBtnClick(){
     console.log(this.sRowData)
     this.backBtnClicked.emit(false)
