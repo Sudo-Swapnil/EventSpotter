@@ -13,10 +13,13 @@ export class CardComponent {
   @Input() sRowData: any;
   eventId: string;
   cardTitle: string;
+  venueName: string;
 
   ngOnInit(){
     this.eventId = this.sRowData.id
     this.cardTitle = this.sRowData.name
+    this.venueName = this.sRowData._embedded.venues[0].name
+    console.log("++++++++++ Venue name: ", this.venueName);
     // console.log("---- Event id ", this.eventId)
   }
 

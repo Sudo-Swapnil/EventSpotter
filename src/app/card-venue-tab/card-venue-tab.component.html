@@ -1,17 +1,17 @@
 <div class="container">
     <div class="row py-2">
         <div class="col-md-6 col-sm-12">
-            <div class="row text-center py-2">
+            <div *ngIf="venueName" class="row text-center py-2">
                 <label class="venue-tab-labels">Name</label><br>
-                <span class="venue-card-api-text">Crypto.com Arena</span>
+                <span class="venue-card-api-text"> {{ venueName }}</span>
             </div>
 
-            <div class="row text-center py-2">
+            <div *ngIf="venueAddress" class="row text-center py-2">
                 <label class="venue-tab-labels">Address</label><br>
-                <span class="venue-card-api-text">1111 S. Figueroa St, LA</span>
+                <span class="venue-card-api-text"> {{ venueAddress }}</span>
             </div>
 
-            <div class="row text-center py-2">
+            <div *ngIf="venuePhone" class="row text-center py-2">
                 <label class="venue-tab-labels">Phone Number</label><br>
                 <span class="venue-card-api-text">646-244-5474</span>
             </div>
@@ -19,38 +19,38 @@
         </div>
         <div class="col-md-6 col-sm-12">
             
-            <div class="row text-center py-2">
+            <div *ngIf="venueOpenHours" class="row text-center py-2">
                 <label class="venue-tab-labels">Open Hours</label><br>
                 <span class="venue-card-api-text">
+                    <!-- Some text which feels authentic and is long enough.
                     Some text which feels authentic and is long enough.
                     Some text which feels authentic and is long enough.
                     Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
+                    Some text which feels authentic and is long enough. -->
                     <!-- {{ dummyResponseText.substr(180) }} -->
                     <!-- <span [ngClass]="{ 'hidden': dummyResponseText.length <= 180 }">{{ dummyResponseText.substr(180) }}</span> -->
                     <!-- <a href="#" class="show-more" (click)="toogleShowMoreLink($event)" *ngIf="dummyResponseText.length > 180">{{ dummyResponseText.length > 180 && 'Show more' || 'Show less' }}</a> -->
                 </span>
             </div>
 
-            <div class="row text-center py-2">
+            <div *ngIf="venueGeneralRule" class="row text-center py-2">
                 <label class="venue-tab-labels">General Rule</label><br>
                 <span class="venue-card-api-text">
+                    <!-- Some text which feels authentic and is long enough.
                     Some text which feels authentic and is long enough.
                     Some text which feels authentic and is long enough.
                     Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
+                    Some text which feels authentic and is long enough. -->
                 </span>
             </div>
         
-            <div class="row text-center py-2">
+            <div *ngIf="venueChildRule" class="row text-center py-2">
                 <label class="venue-tab-labels">Child Rule</label><br>
                 <span class="venue-card-api-text">
+                    <!-- Some text which feels authentic and is long enough.
                     Some text which feels authentic and is long enough.
                     Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
+                    Some text which feels authentic and is long enough. -->
                 </span>
             </div>
 
