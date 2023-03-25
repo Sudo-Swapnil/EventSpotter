@@ -29,6 +29,9 @@ import { CardVenueTabComponent } from './card-venue-tab/card-venue-tab.component
 import { CardArtistsTabComponent } from './card-artists-tab/card-artists-tab.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+//google maps
+import { GoogleMapsModule } from '@angular/google-maps'
+
 
 @NgModule({
   declarations: [
@@ -53,7 +56,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatTabsModule,
     MatIconModule,
     FontAwesomeModule,
-    NgbModule
+    NgbModule,
+    GoogleMapsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
