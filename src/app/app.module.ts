@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatInputModule } from '@angular/material/input';
 import { CardComponent } from './card/card.component'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 //for angular material tabs
 import { MatTabsModule } from '@angular/material/tabs'
@@ -58,6 +59,7 @@ import { GoogleMapsModule } from '@angular/google-maps'
     FontAwesomeModule,
     NgbModule,
     GoogleMapsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
