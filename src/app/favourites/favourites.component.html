@@ -1,1 +1,28 @@
-<p>favourites works!</p>
+<div class="container">
+    <div *ngIf="tableData.length > 0" class="text-center m-4">
+        <span class="events-form-labels" style="font-size: 1.3rem;">List of your favorite events</span>
+    </div>
+    <div *ngIf="tableData.length > 0" class="d-flex justify-content-center">
+        <table class="table" id="favorites-table">
+            <thead>
+                <th>#</th>
+                <th>Date</th>
+                <th>Event</th>
+                <th>Category</th>
+                <th>Venue</th>
+                <th>Favorite</th>
+            </thead>
+            <tr *ngFor="let row of tableData; let idx = index">
+                <td>{{ idx + 1}}</td>
+                <td>{{ row.Date }}</td>
+                <td>{{ row.Event }}</td>
+                <td>{{ row.Category }}</td>
+                <td>{{ row.Venue }}</td>
+                <td><fa-icon (click)="removeFromFavorite(row)" class="trash-icon" [icon]="faTrash"></fa-icon></td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="tableData.length == 0" class="text-center m-5 fav-wraper">
+        <div class="no-fav-events text-center">No favorite events to show</div>
+    </div>
+</div>

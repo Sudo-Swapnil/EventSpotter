@@ -1,0 +1,30 @@
+#favorites-table {
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 1rem;
+    text-align: center;
+    background-color: white !important;
+}
+
+table tr, table th{
+    height: 40px;
+}
+
+tr:hover{
+    background-color: rgb(246, 244, 241);
+}
+
+.trash-icon:hover{
+    cursor: pointer;
+}
+
+.no-fav-events{
+    background-color: white;
+    color: red;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+
+.fav-wraper{
+    padding: 0% 15% 0% 15%;
+}

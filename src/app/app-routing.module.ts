@@ -4,6 +4,7 @@ import { SearchComponent } from './search/search.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'search', pathMatch: 'full'},
   {path: 'search', component: SearchComponent},
   {path: 'favourites', component: FavouritesComponent}
 ];
