@@ -33,14 +33,19 @@ export class CardEventsTabComponent {
     // const formValues = this.eventsForm.value;
     // const queryParams = `?keyword=${formValues.keyword}&distance=${formValues.distance}&location=${formValues.location}&category=${formValues.category}&checkbox=${formValues.checkbox}`;
     // const url = `http://localhost:3000/api/getTableInformation${queryParams}`;
-    const url = `http://localhost:3000/api/tkm?keyword=${this.eventId}`;
-    console.log(url)
-
+    
+    
+    const eventCardUrl = `http://localhost:3000/api/getEventInfo?eventId=${this.eventId}`;
+    console.log("#### EventsCardUrl: ", eventCardUrl);
+    
+    // const url = `http://localhost:3000/api/tkm?keyword=${this.eventId}`;
+    // console.log(url)
+    // let result = this.http.get<any>(url)
     console.log("Making request...")
-    // let result = this.http.get('http://localhost:3000/test/sort')
-    let result = this.http.get<any>(url)
+
+    let result = this.http.get<any>(eventCardUrl)
     console.log(result.subscribe((data) => {
-      this.eventsData = data[0]
+      this.eventsData = data
       this.eventDateTime = this.eventsData?.dates?.start?.localDate + " " + this.eventsData?.dates?.start?.localTime
       
       
@@ -60,7 +65,7 @@ export class CardEventsTabComponent {
         this.priceRange = priceRangeObj.min + " - " + priceRangeObj.max + " USD"
       }
 
-      let statusObj = this.eventsData['dates']['status']['code']
+      let statusObj = this.eventsData?.dates?.status?.code
       console.log(statusObj)
       this.statusInfo = setStatusValue(statusObj)
 
