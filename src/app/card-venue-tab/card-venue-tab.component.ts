@@ -60,16 +60,19 @@ export class CardVenueTabComponent {
   }
 
   getVenueInformation(){
-
-    const url = `http://localhost:3000/api/venue?venueName=${this.venueNameFromTable}`;
-    console.log(url)
+    // const url = `http://localhost:3000/api/venue?venueName=${this.venueNameFromTable}`;
+    // console.log(url)
     console.log("Making request...")
     // let result = this.http.get('http://localhost:3000/test/sort')
-    let result = this.http.get<any>(url)
+    // let result = this.http.get<any>(url)
+
+    const venueDetailsUrl = `http://localhost:3000/api/getVenueInfo?venueName=${this.venueNameFromTable}`;
+    console.log(venueDetailsUrl)
+    let result = this.http.get<any>(venueDetailsUrl)
     result.subscribe((data) => {
       console.log("Venue data below: -------------->>>>>>>>>>>>>")
       console.log(data)
-      this.venueData = data._embedded.venues[0];
+      this.venueData = data;
       //venueName
       this.venueName = this.venueData.name;
       //venueAddress
