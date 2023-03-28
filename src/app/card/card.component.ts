@@ -14,6 +14,7 @@ export class CardComponent {
   eventId: string;
   cardTitle: string;
   venueName: string;
+  artistArray: any;
 
   ngOnInit(){
     this.eventId = this.sRowData.id
@@ -27,6 +28,11 @@ export class CardComponent {
     console.log(this.sRowData)
     this.backBtnClicked.emit(false)
     console.log("Emitted value")
+  }
+
+  artistArrayHandler(data: any){
+    this.artistArray = data;
+    console.log("GOT DATA FROM EVENTS: ",this.artistArray);
   }
 
 }

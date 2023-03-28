@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons';
 @Component({
@@ -8,6 +8,7 @@ import { faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons';
 })
 export class CardEventsTabComponent {
   @Input() eventId: string;
+  @Output() artistsArray = new EventEmitter<any>();
   faTwitter = faTwitter;
   faFacebook = faFacebook
   eventsData: any;
@@ -50,6 +51,9 @@ export class CardEventsTabComponent {
       
       
       const artistNames = this.eventsData?._embedded?.attractions?.map(attraction => attraction.name);
+
+      this.artistsArray.emit(artistNames);
+
       const concatNames = artistNames?.join(' | ');
 
       this.artistNames = concatNames

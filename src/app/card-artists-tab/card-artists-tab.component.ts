@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 import { HttpClient } from '@angular/common/http';
@@ -13,6 +13,7 @@ export class CardArtistsTabComponent {
   progressSpinner = 95;
   followers: number = 90000000;
   
+  @Input() artistArray: any;
 
   images = [
     {title: 'First Slide', short: 'First Slide Short', src: "https://picsum.photos/id/700/900/500"},
@@ -28,53 +29,63 @@ export class CardArtistsTabComponent {
   }
 
   ngOnInit(){
-    console.log(this.followers.toLocaleString("en-US"));
-    this.getArtistInformation("<ArtistName>")
-    console.log("*******************************")
-    console.log(this.artistsApiData)
+
   }
 
-  getArtistInformation(name){
-    const url = `http://localhost:3000/api/spotify?venueName=somevenue`;
-    console.log(url)
-    console.log("Making request...")
-    const urlForAlbums = `http://localhost:3000/api/spotify/topAlbums?venueName=somevenue`;
-    let result = this.http.get<any>(url);
-    result.subscribe((data) => {
-      console.log("Artist Information------------|||||||||");
-      console.log(data)
-      if(data){
-        let currentArtist = {}
-        currentArtist['name'] = data?.name;
-        currentArtist['followers'] = Number(data?.followers?.total).toLocaleString('en-US');
-        currentArtist['popularity'] = data?.popularity;
-        currentArtist['external_urls'] = data?.external_urls?.spotify
-        currentArtist['dp'] = data?.images[0]?.url
-        let albumsData = this.http.get<any>(urlForAlbums);
-        albumsData.subscribe((data2) => {
-          // console.log("<<<<<<<<<<<<<<<<<<<< INSIDE ALBUMS DATA: >>>>>>>>>>>>>>>>>>>>>>>>>>")
-          // console.log("THIS", data2)
-          let topThreeAlbumsUrl = []
-          for (let obj of data2.items){
-            topThreeAlbumsUrl.push(obj.images[0].url)
-          }
-          currentArtist['topThreeAlbumsUrl'] = [...topThreeAlbumsUrl]; 
-          console.log("+++++++++++++++++++++++++++++Current Artists: ")
-          console.log(currentArtist);
-          this.artistsApiData.push(Object.assign({}, currentArtist))
-          console.log(this.artistsApiData)
-        }, (error) => {
-          console.log("Something went wrong with getting top albums!: ", error)
-        })
-
-
-
-        
-      }
-    }, (error) => {
-      console.log("An error occurred while fetching the data: ");
-      console.log(error);
-    });
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['artistArray']){
+      console.log(this.followers.toLocaleString("en-US"));
+      this.getArtistInformation()
+      console.log("*******************************")
+      console.log(this.artistsApiData)
+    }
   }
-  
+
+  getArtistInformation(){
+    if (this.artistArray){
+      var artists = this.artistArray.join("|")
+      const url = `http://localhost:3000/api/spotify?artists=${artists}`;
+      console.log(url)
+      console.log("Making request...")
+      const urlForAlbums = `http://localhost:3000/api/spotify/topAlbums?venueName=${artists}`;
+      let result = this.http.get<any>(url);
+      result.subscribe((data) => {
+        console.log("Artist Information------------|||||||||");
+        console.log(data)
+        if(data){
+          let currentArtist = {}
+          currentArtist['name'] = data?.name;
+          currentArtist['followers'] = Number(data?.followers?.total).toLocaleString('en-US');
+          currentArtist['popularity'] = data?.popularity;
+          currentArtist['external_urls'] = data?.external_urls?.spotify
+          currentArtist['dp'] = data?.images[0]?.url
+          let albumsData = this.http.get<any>(urlForAlbums);
+          albumsData.subscribe((data2) => {
+            // console.log("<<<<<<<<<<<<<<<<<<<< INSIDE ALBUMS DATA: >>>>>>>>>>>>>>>>>>>>>>>>>>")
+            // console.log("THIS", data2)
+            let topThreeAlbumsUrl = []
+            for (let obj of data2.items){
+              topThreeAlbumsUrl.push(obj.images[0].url)
+            }
+            currentArtist['topThreeAlbumsUrl'] = [...topThreeAlbumsUrl]; 
+            console.log("+++++++++++++++++++++++++++++Current Artists: ")
+            console.log(currentArtist);
+            this.artistsApiData.push(Object.assign({}, currentArtist))
+            console.log(this.artistsApiData)
+          }, (error) => {
+            console.log("Something went wrong with getting top albums!: ", error)
+          })
+
+
+
+          
+        }
+      }, (error) => {
+        console.log("An error occurred while fetching the data: ");
+        console.log(error);
+      });
+    }
+
+  }
+      
 }
