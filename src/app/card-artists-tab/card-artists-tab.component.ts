@@ -44,40 +44,42 @@ export class CardArtistsTabComponent {
   getArtistInformation(){
     if (this.artistArray){
       var artists = this.artistArray.join("|")
-      const url = `http://localhost:3000/api/spotify?artists=${artists}`;
+      // const url = `http://localhost:3000/api/spotify?artists=${artists}`;
+      const url = `http://localhost:3000/api/spotify?artists=Maroon 5|Ellie Goulding`;
       console.log(url)
       console.log("Making request...")
-      const urlForAlbums = `http://localhost:3000/api/spotify/topAlbums?venueName=${artists}`;
+      
       let result = this.http.get<any>(url);
-      result.subscribe((data) => {
+      result.subscribe((dataOfArtists) => {
         console.log("Artist Information------------|||||||||");
-        console.log(data)
-        if(data){
-          let currentArtist = {}
-          currentArtist['name'] = data?.name;
-          currentArtist['followers'] = Number(data?.followers?.total).toLocaleString('en-US');
-          currentArtist['popularity'] = data?.popularity;
-          currentArtist['external_urls'] = data?.external_urls?.spotify
-          currentArtist['dp'] = data?.images[0]?.url
-          let albumsData = this.http.get<any>(urlForAlbums);
-          albumsData.subscribe((data2) => {
-            // console.log("<<<<<<<<<<<<<<<<<<<< INSIDE ALBUMS DATA: >>>>>>>>>>>>>>>>>>>>>>>>>>")
-            // console.log("THIS", data2)
-            let topThreeAlbumsUrl = []
-            for (let obj of data2.items){
-              topThreeAlbumsUrl.push(obj.images[0].url)
-            }
-            currentArtist['topThreeAlbumsUrl'] = [...topThreeAlbumsUrl]; 
-            console.log("+++++++++++++++++++++++++++++Current Artists: ")
-            console.log(currentArtist);
-            this.artistsApiData.push(Object.assign({}, currentArtist))
-            console.log(this.artistsApiData)
-          }, (error) => {
-            console.log("Something went wrong with getting top albums!: ", error)
-          })
-
-
-
+        console.log(dataOfArtists)
+        // data = data[0]
+        if(dataOfArtists){
+          dataOfArtists.forEach(data => {
+            let currentArtist = {}
+            currentArtist['name'] = data?.name;
+            currentArtist['followers'] = Number(data?.followers?.total).toLocaleString('en-US');
+            currentArtist['popularity'] = data?.popularity;
+            currentArtist['external_urls'] = data?.external_urls?.spotify
+            currentArtist['dp'] = data?.images[0]?.url
+            const urlForAlbums = `http://localhost:3000/api/spotify/topAlbums?artistId=${data.id}`;
+            let albumsData = this.http.get<any>(urlForAlbums);
+            albumsData.subscribe((data2) => {
+              // console.log("<<<<<<<<<<<<<<<<<<<< INSIDE ALBUMS DATA: >>>>>>>>>>>>>>>>>>>>>>>>>>")
+              // console.log("THIS", data2)
+              let topThreeAlbumsUrl = []
+              for (let obj of data2.items){
+                topThreeAlbumsUrl.push(obj.images[0].url)
+              }
+              currentArtist['topThreeAlbumsUrl'] = [...topThreeAlbumsUrl]; 
+              console.log("+++++++++++++++++++++++++++++Current Artists: ")
+              console.log(currentArtist);
+              this.artistsApiData.push(Object.assign({}, currentArtist))
+              console.log(this.artistsApiData)
+            }, (error) => {
+              console.log("Something went wrong with getting top albums!: ", error)
+            })
+          });
           
         }
       }, (error) => {
