@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit{
   errorMsg: string;
   minLength = 3;
   selectedEvent: any = "";
+  autoLocation: string = '';
 
   constructor (private http: HttpClient) {}
 
@@ -72,13 +73,39 @@ export class SearchComponent implements OnInit{
       }
       console.log(this.filteredEvents);
     });
+
+
+
+    this.eventsForm.get('checkbox').valueChanges.subscribe((checked) => {
+      const locationField = this.eventsForm.get('location')
+      if (checked) {
+        //disable location
+        locationField.setValue('')
+        locationField.disable()
+        //call ipinfo api
+        var ip_info_token = "f89a3c9a8ad62b"
+        var ip_info_url = `https://ipinfo.io/?token=${ip_info_token}`
+        let result = this.http.get<any>(ip_info_url)
+        result.subscribe((ipdata) => {
+          console.log(ipdata)
+          this.autoLocation = ipdata.loc;
+        })
+      }
+      else {
+        locationField.enable();
+        this.autoLocation = '';
+      }
+    })
+
   }
 
   eventsTableData: any;
 
 
 
+
   submitForm(){
+    console.log("AUTOLOCATION: ", this.autoLocation)
     console.log(this.eventsForm.value);
     console.log(this.eventsForm.value.location) 
     this.makeGetRequest()
@@ -87,9 +114,11 @@ export class SearchComponent implements OnInit{
 
   makeGetRequest(){
     const formValues = this.eventsForm.value;
-    const queryParams = `?keyword=${formValues.keyword}&distance=${formValues.distance}&location=${formValues.location}&category=${formValues.category}&checkbox=${formValues.checkbox}`;
-    // const url = `http://localhost:3000/api/getTableInformation${queryParams}`;
-    const url = `http://localhost:3000/test/sort`;
+    const queryParams = `?keyword=${formValues.keyword}&distance=${formValues.distance}&location=${formValues.location}&category=${formValues.category}&checkbox=${formValues.checkbox}&autolocation=${this.autoLocation}`;
+    const url = `http://localhost:3000/api/getTableInformation${queryParams}`;
+    console.log("QUERY PARAMS BELOW: ")
+    console.log(queryParams)
+    // const url = `http://localhost:3000/test/sort`;
     console.log(url)
 
     console.log("Making request...")
@@ -105,5 +134,7 @@ export class SearchComponent implements OnInit{
   resetForm() {
     this.eventsForm.reset();
     this.eventsForm.controls['category'].setValue('Default')
+    this.eventsTableData = '';
+    this.autoLocation = '';
   }
 }
