@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http'
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { debounceTime, tap, switchMap, finalize, distinctUntilChanged, filter } from 'rxjs/operators';
 
@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit{
   eventsForm = new FormGroup({
     keyword: new FormControl(),
     distance: new FormControl(),
-    location: new FormControl(),
+    location: new FormControl('', [Validators.required]),
     category: new FormControl('Default'),
     checkbox: new FormControl()
   });
@@ -80,7 +80,7 @@ export class SearchComponent implements OnInit{
 
   submitForm(){
     console.log(this.eventsForm.value);
-    console.log(this.eventsForm.value.location)
+    console.log(this.eventsForm.value.location) 
     this.makeGetRequest()
   }
 
@@ -100,5 +100,10 @@ export class SearchComponent implements OnInit{
       this.eventsTableData = data
     }))
     console.log("Request complete...")
+  }
+
+  resetForm() {
+    this.eventsForm.reset();
+    this.eventsForm.controls['category'].setValue('Default')
   }
 }
