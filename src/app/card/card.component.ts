@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, ViewEncapsulation, Input } from '@angular/core';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-card',
