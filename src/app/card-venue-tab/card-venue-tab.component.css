@@ -11,3 +11,26 @@
     width: 300px;
 }
 
+.restricted-show-container {
+  font-size: 1.15rem;
+  height: 4.6rem;
+  line-height: 1.15rem;
+  overflow: hidden;
+}
+
+
+.show-btn{
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: rgb(97, 147, 240);
+}
+
+.show-btn:hover{
+  text-decoration: underline;
+}
+
+.show {
+  overflow: visible;
+  height: auto;
+}

@@ -22,38 +22,36 @@
             <div *ngIf="venueOpenHours" class="row text-center py-2">
                 <label class="venue-tab-labels">Open Hours</label><br>
                 <span class="venue-card-api-text">
-                    {{ venueOpenHours }}
-                    <!-- Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough. -->
-                    <!-- {{ dummyResponseText.substr(180) }} -->
-                    <!-- <span [ngClass]="{ 'hidden': dummyResponseText.length <= 180 }">{{ dummyResponseText.substr(180) }}</span> -->
-                    <!-- <a href="#" class="show-more" (click)="toogleShowMoreLink($event)" *ngIf="dummyResponseText.length > 180">{{ dummyResponseText.length > 180 && 'Show more' || 'Show less' }}</a> -->
+                    <div class="restricted-show-container" [class.show]="showVenueHours">
+                        {{ venueOpenHours }}
+                    </div>
+                    <button class="show-btn" *ngIf="venueOpenHours.length > 100" (click)="showVenueHours = !showVenueHours">
+                        {{ showVenueHours ? 'Show less': 'Show More' }}
+                    </button>
                 </span>
             </div>
 
-            <div *ngIf="venueGeneralRule" class="row text-center py-2">
+            <div *ngIf="venueGeneralRule"  class="row text-center py-2">
                 <label class="venue-tab-labels">General Rule</label><br>
                 <span class="venue-card-api-text">
-                    {{ venueGeneralRule }}
-                    <!-- Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough. -->
+                    <div class="restricted-show-container" [class.show]="showVenueGeneralRules">
+                        {{ venueGeneralRule }}
+                    </div>
+                    <button class="show-btn" *ngIf="venueGeneralRule.length > 100" (click)="showVenueGeneralRules = !showVenueGeneralRules">
+                        {{ showVenueGeneralRules ? 'Show less': 'Show More' }}
+                    </button>
                 </span>
             </div>
         
             <div *ngIf="venueChildRule" class="row text-center py-2">
                 <label class="venue-tab-labels">Child Rule</label><br>
                 <span class="venue-card-api-text">
-                    {{ venueChildRule }}
-                    <!-- Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough.
-                    Some text which feels authentic and is long enough. -->
+                    <div class="restricted-show-container" [class.show]="showVenueChildRules">
+                        {{ venueChildRule }}
+                    </div>
+                    <button class="show-btn" *ngIf="venueChildRule.length > 100" (click)="showVenueChildRules = !showVenueChildRules">
+                        {{ showVenueChildRules ? 'Show less': 'Show More' }}
+                    </button>
                 </span>
             </div>
 
