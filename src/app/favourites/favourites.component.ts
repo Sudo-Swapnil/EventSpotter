@@ -10,7 +10,13 @@ export class FavouritesComponent {
   tableData: any[] = [];
   
   ngOnInit(){
-    this.tableData = JSON.parse(localStorage.getItem("favoriteEvents"));
+    var tableInfoInLS = JSON.parse(localStorage.getItem("favoriteEvents"));
+    if (tableInfoInLS) {
+      this.tableData = tableInfoInLS;  
+    }
+    console.log(this.tableData, " is the number of items in local storage"); 
+    console.log(this.tableData.length, " is the number of items in local storage"); 
+
     // if (this.tableData){
     //   console.log(this.tableData.length, " is the number of items in local storage"); 
     // }

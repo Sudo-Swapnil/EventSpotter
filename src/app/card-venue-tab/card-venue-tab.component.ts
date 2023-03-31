@@ -30,37 +30,37 @@ export class CardVenueTabComponent {
 
   ngOnInit(){
     this.getVenueInformation()
-    let favTest = [
-      {
-        "Date": "2023-03-20",
-        "Event": "Concert",
-        "Category": "Music",
-        "Venue": "Madison Square Garden",
-        "Favorite": true
-      },
-      {
-        "Date": "2023-04-02",
-        "Event": "Basketball Game",
-        "Category": "Sports",
-        "Venue": "Barclays Center",
-        "Favorite": false
-      },
-      {
-        "Date": "2023-04-15",
-        "Event": "Musical",
-        "Category": "Theater",
-        "Venue": "Broadway Theatre",
-        "Favorite": true
-      },
-      {
-        "Date": "2023-05-01",
-        "Event": "Comedy Show",
-        "Category": "Entertainment",
-        "Venue": "Comedy Cellar",
-        "Favorite": false
-      }
-    ]
-    localStorage.setItem("favoriteEvents", JSON.stringify(favTest)); //TODO remove this
+    // let favTest = [
+    //   {
+    //     "Date": "2023-03-20",
+    //     "Event": "Concert",
+    //     "Category": "Music",
+    //     "Venue": "Madison Square Garden",
+    //     "Favorite": true
+    //   },
+    //   {
+    //     "Date": "2023-04-02",
+    //     "Event": "Basketball Game",
+    //     "Category": "Sports",
+    //     "Venue": "Barclays Center",
+    //     "Favorite": false
+    //   },
+    //   {
+    //     "Date": "2023-04-15",
+    //     "Event": "Musical",
+    //     "Category": "Theater",
+    //     "Venue": "Broadway Theatre",
+    //     "Favorite": true
+    //   },
+    //   {
+    //     "Date": "2023-05-01",
+    //     "Event": "Comedy Show",
+    //     "Category": "Entertainment",
+    //     "Venue": "Comedy Cellar",
+    //     "Favorite": false
+    //   }
+    // ]
+    // localStorage.setItem("favoriteEvents", JSON.stringify(favTest)); //TODO remove this
   }
 
   getVenueInformation(){
@@ -121,7 +121,6 @@ export class CardVenueTabComponent {
   }
 
   showVenueHours = false;
-  dummyVenueContent = "Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
   showVenueGeneralRules = false;
   showVenueChildRules = false;
   
