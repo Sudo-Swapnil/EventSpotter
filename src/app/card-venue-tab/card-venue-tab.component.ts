@@ -17,6 +17,10 @@ export class CardVenueTabComponent {
   venueGeneralRule: string;
   venueChildRule: string;
   venueData: any;
+  venueLatitute: any;
+  venueLongiture: any;
+  mapOptions: google.maps.MapOptions;
+  mapMarker: any;
 
   constructor(private http: HttpClient, private modalService: NgbModal) {}
 
@@ -95,6 +99,22 @@ export class CardVenueTabComponent {
       this.venueGeneralRule = this.venueData?.generalInfo?.generalRule;
       //venueChildRule
       this.venueChildRule = this.venueData?.generalInfo?.childRule;
+      //venueLat and long:
+      this.venueLatitute = parseFloat(this.venueData?.location?.latitude)
+      this.venueLongiture = parseFloat(this.venueData?.location?.longitude)
+      this.mapOptions = {
+        center: { 
+          lat: this.venueLatitute,
+          lng: this.venueLongiture
+        },
+        zoom: 14
+      };
+      this.mapMarker = {
+        position: {
+          lat: this.venueLatitute,
+          lng: this.venueLongiture 
+        },
+     }
 
     })
     console.log("Request complete...")

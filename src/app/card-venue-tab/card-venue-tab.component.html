@@ -69,11 +69,13 @@
     <ng-template #googleVenueModal let-modal id="wrapper-for-maps-modal">
         <div class="custom-width">
             <div class="modal-header">
-                <h3 class="modal-title">Venue name goes here</h3>
+                <h3 class="modal-title">Event Venue</h3>
             </div>
             <div class="modal-body">
                 <div class="my-google-map">
-                    <google-map width="98.5%"></google-map>
+                    <google-map width="98.5%" [options]="mapOptions">
+                        <map-marker [position]="mapMarker.position"></map-marker>
+                    </google-map>
                 </div>
             </div>
             <div class="modal-footer text-left justify-content-start">
