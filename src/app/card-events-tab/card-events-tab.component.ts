@@ -45,7 +45,8 @@ export class CardEventsTabComponent {
     console.log("Making request...")
 
     let result = this.http.get<any>(eventCardUrl)
-    console.log(result.subscribe((data) => {
+    result.subscribe((data) => {
+      console.log("EVENTS TAB DATA: ", data)
       this.eventsData = data
       this.eventDateTime = this.eventsData?.dates?.start?.localDate + " " + this.eventsData?.dates?.start?.localTime
       
@@ -83,7 +84,7 @@ export class CardEventsTabComponent {
       this.twitterLink = `http://twitter.com/share?text=${this.title}&url=${this.ticketUrl}`
 
       console.log("Success!!!!!!!!!!!!!!")
-    }))
+    })
     console.log("Request complete...")
   }
 }

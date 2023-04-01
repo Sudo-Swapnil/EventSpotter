@@ -44,8 +44,8 @@ export class CardArtistsTabComponent {
   getArtistInformation(){
     if (this.artistArray){
       var artists = this.artistArray.join("|")
-      // const url = `http://localhost:3000/api/spotify?artists=${artists}`;
-      const url = `http://localhost:3000/api/spotify?artists=Maroon 5`;
+      const url = `http://localhost:3000/api/spotify?artists=${artists}`;
+      // const url = `http://localhost:3000/api/spotify?artists=Maroon 5`;
       // const url = `http://localhost:3000/api/spotify?artists=rahul dravid`;
       console.log(url)
       console.log("Making request...")
@@ -64,7 +64,7 @@ export class CardArtistsTabComponent {
             currentArtist['popularity'] = data?.popularity;
             currentArtist['external_urls'] = data?.external_urls?.spotify
             currentArtist['dp'] = data?.images[0]?.url
-            const urlForAlbums = `http://localhost:3000/api/spotify/topAlbums?artistId=${data.id}`;
+            const urlForAlbums = `http://localhost:3000/api/spotify/topAlbums?artistId=${data?.id}`;
             let albumsData = this.http.get<any>(urlForAlbums);
             albumsData.subscribe((data2) => {
               // console.log("<<<<<<<<<<<<<<<<<<<< INSIDE ALBUMS DATA: >>>>>>>>>>>>>>>>>>>>>>>>>>")

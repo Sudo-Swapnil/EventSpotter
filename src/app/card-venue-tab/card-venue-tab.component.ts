@@ -78,7 +78,7 @@ export class CardVenueTabComponent {
       console.log(data)
       this.venueData = data;
       //venueName
-      this.venueName = this.venueData.name;
+      this.venueName = this.venueData?.name;
       //venueAddress
       let venueAddressComponents = [];
       if (this.venueData?.address?.line1) {
