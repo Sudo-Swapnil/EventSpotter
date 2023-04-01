@@ -51,7 +51,7 @@ export class CardEventsTabComponent {
     result.subscribe((data) => {
       console.log("EVENTS TAB DATA: ", data)
       this.eventsData = data
-      this.eventDateTime = this.eventsData?.dates?.start?.localDate + " " + this.eventsData?.dates?.start?.localTime
+      this.eventDateTime = this.eventsData?.dates?.start?.localDate
       
       
       const artistNames = this.eventsData?._embedded?.attractions?.map(attraction => attraction.name);
@@ -93,7 +93,6 @@ export class CardEventsTabComponent {
 }
 
 function setStatusValue(statusObj) {
-  let statusBtn = document.getElementById("status-info")
     if (statusObj === "onsale") {
       return "On Sale"
   }
@@ -120,19 +119,19 @@ function setStatusValue(statusObj) {
 
 function getConcatGenre(genreObject: any){
   var genre = [];
-  if (genreObject?.segment?.name) {
+  if (genreObject?.segment?.name && genreObject?.segment?.name !== "undefined") {
     genre.push(genreObject.segment.name)
   }
-  if (genreObject?.genre?.name) {
+  if (genreObject?.genre?.name && genreObject?.genre?.name.toLowerCase() !== "undefined") {
     genre.push(genreObject.genre.name)
   }
-  if (genreObject?.subGenre?.name) {
+  if (genreObject?.subGenre?.name && genreObject?.subGenre?.name.toLowerCase() !== "undefined") {
     genre.push(genreObject.subGenre.name)
   }
-  if (genreObject?.type?.name) {
+  if (genreObject?.type?.name && genreObject?.type?.name.toLowerCase() !== "undefined") {
     genre.push(genreObject.type.name)
   }
-  if (genreObject?.subType?.name) {
+  if (genreObject?.subType?.name && genreObject?.subType?.name.toLowerCase() !== "undefined") {
     genre.push(genreObject.subType.name)
   }
   return genre.join(" | ")

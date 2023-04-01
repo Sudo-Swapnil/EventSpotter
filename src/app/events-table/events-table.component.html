@@ -16,8 +16,16 @@
               <td>{{ row.dates?.start?.localDate }}<br>{{ row.dates?.start?.localTime}}</td>
               <td><img [src]="row.images[5].url" width="150"></td>
               <td>{{ row.name }}</td>
-              <td>{{ row.classifications[0]?.segment?.name }}</td>
-              <td>{{ row._embedded?.venues[0]?.name }}</td>
+              <td>
+                <span *ngIf="row.classifications[0]?.segment?.name && row.classifications[0]?.segment?.name.toLowerCase() !== 'undefined'">
+                  {{ row.classifications[0]?.segment?.name }}
+                </span>
+              </td>
+              <td>
+                <span *ngIf="row._embedded?.venues[0]?.name && row._embedded?.venues[0]?.name.toLowerCase() !== 'undefined'">
+                  {{ row._embedded?.venues[0]?.name }}
+                </span>
+              </td>
             </tr>
           </tbody>
       </table>
