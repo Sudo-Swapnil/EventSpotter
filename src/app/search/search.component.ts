@@ -34,11 +34,11 @@ export class SearchComponent implements OnInit{
 
   onSelectedEvent(){
     console.log(this.selectedEvent);
-    this.selectedEvent = this.selectedEvent;
+    this.selectedEvent = this.selectedEvent.name;
   }
 
   displayWith(value: any) {
-    return value?.Title;
+    return value;
   }
 
   ngOnInit(){  
@@ -55,7 +55,8 @@ export class SearchComponent implements OnInit{
         this.filteredEvents = [];
         this.isLoading = true;
       }),
-      switchMap(value => this.http.get('http://www.omdbapi.com/?apikey=' + API_KEY + '&s=' + value)
+      // switchMap(value => this.http.get('http://www.omdbapi.com/?apikey=' + API_KEY + '&s=' + value)
+      switchMap(value => this.http.get('http://localhost:3000/api/typeAhead?value=' + value)
         .pipe(
           finalize(() => {
             this.isLoading = false
@@ -64,14 +65,14 @@ export class SearchComponent implements OnInit{
       )
     )
     .subscribe((data: any) => {
-      if (data['Search'] == undefined) {
+      if (data['_embedded']['attractions'] == undefined) {
         this.errorMsg = data['Error'];
         this.filteredEvents = [];
       } else {
         this.errorMsg = "";
-        this.filteredEvents = data['Search'];
+        this.filteredEvents = data['_embedded']['attractions'];
       }
-      console.log(this.filteredEvents);
+      console.log("Filtered events: ", this.filteredEvents);
     });
 
 

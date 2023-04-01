@@ -16,8 +16,9 @@
             [displayWith]="displayWith">
             <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
             <ng-container *ngIf="!isLoading">
-                <mat-option *ngFor="let movie of filteredEvents" [value]="movie">
-                <span><b>{{movie.Title}}</b> ({{movie.Year}})</span>
+                <mat-option *ngFor="let event of filteredEvents" [value]="event">
+                <span>{{event.name}}</span>
+                <!-- <span><b>{{movie.Title}}</b> ({{movie.Year}})</span> -->
                 </mat-option>
             </ng-container>
             </mat-autocomplete>
