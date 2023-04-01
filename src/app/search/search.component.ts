@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit{
   
   eventsForm = new FormGroup({
     keyword: new FormControl(),
-    distance: new FormControl(),
+    distance: new FormControl('10'),
     location: new FormControl('', [Validators.required]),
     category: new FormControl('Default'),
     checkbox: new FormControl()
@@ -136,5 +136,6 @@ export class SearchComponent implements OnInit{
     this.eventsForm.controls['category'].setValue('Default')
     this.eventsTableData = '';
     this.autoLocation = '';
+    this.eventsForm.controls['distance'].setValue('10')
   }
 }
