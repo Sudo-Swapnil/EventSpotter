@@ -15,3 +15,10 @@
 .followers-text{
     font-size: 1.6rem;
 }
+
+.no-music-artist-events{
+    background-color: white;
+    color: red;
+    margin: 0 auto;
+    border-radius: 30px;
+}

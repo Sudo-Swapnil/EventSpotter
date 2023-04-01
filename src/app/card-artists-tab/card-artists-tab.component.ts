@@ -45,7 +45,8 @@ export class CardArtistsTabComponent {
     if (this.artistArray){
       var artists = this.artistArray.join("|")
       // const url = `http://localhost:3000/api/spotify?artists=${artists}`;
-      const url = `http://localhost:3000/api/spotify?artists=Maroon 5|Ellie Goulding`;
+      const url = `http://localhost:3000/api/spotify?artists=Maroon 5`;
+      // const url = `http://localhost:3000/api/spotify?artists=rahul dravid`;
       console.log(url)
       console.log("Making request...")
       
@@ -56,6 +57,7 @@ export class CardArtistsTabComponent {
         // data = data[0]
         if(dataOfArtists){
           dataOfArtists.forEach(data => {
+            console.log("ARTIST DATA: ", data)
             let currentArtist = {}
             currentArtist['name'] = data?.name;
             currentArtist['followers'] = Number(data?.followers?.total).toLocaleString('en-US');

@@ -44,8 +44,14 @@ export class CardComponent {
   }
 
   artistArrayHandler(data: any){
-    this.artistArray = data;
-    console.log("GOT DATA FROM EVENTS: ",this.artistArray);
+    if (this.sRowData.classifications[0]?.segment?.name == 'Music') {
+      this.artistArray = data;
+      console.log("GOT MUSIC ARTISTS FROM EVENTS: ",this.artistArray);
+    }
+    else {
+      console.log("No music related artists!!!!")
+    }
+    
   }
 
   setFavorite(){
