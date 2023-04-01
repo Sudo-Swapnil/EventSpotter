@@ -94,6 +94,7 @@ export class CardComponent {
     favEvents.splice(index, 1);
         
     localStorage.setItem("favoriteEvents", JSON.stringify(favEvents));
+    alert("Event removed from Favorites!")
     console.log("----------- UNSET FAV IS END ------------")
   }
 
