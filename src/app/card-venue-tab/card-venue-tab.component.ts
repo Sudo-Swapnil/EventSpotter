@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-card-venue-tab',
@@ -9,6 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
   styleUrls: ['./card-venue-tab.component.css']
 })
 export class CardVenueTabComponent {
+  nodeUrl = environment.nodeUrl;
   @Input() venueNameFromTable: any;
   venueName: string;
   venueAddress: string;
@@ -70,7 +71,7 @@ export class CardVenueTabComponent {
     // let result = this.http.get('http://localhost:3000/test/sort')
     // let result = this.http.get<any>(url)
 
-    const venueDetailsUrl = `http://localhost:3000/api/getVenueInfo?venueName=${this.venueNameFromTable}`;
+    const venueDetailsUrl = `${this.nodeUrl}/api/getVenueInfo?venueName=${this.venueNameFromTable}`;
     console.log(venueDetailsUrl)
     let result = this.http.get<any>(venueDetailsUrl)
     result.subscribe((data) => {

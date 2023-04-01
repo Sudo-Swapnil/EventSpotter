@@ -5,7 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { debounceTime, tap, switchMap, finalize, distinctUntilChanged, filter } from 'rxjs/operators';
 
 
-import { environment } from '../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 const API_KEY = "ded27983"
 

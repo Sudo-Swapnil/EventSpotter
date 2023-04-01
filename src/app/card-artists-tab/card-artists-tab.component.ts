@@ -2,6 +2,7 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-card-artists-tab',
@@ -9,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./card-artists-tab.component.css']
 })
 export class CardArtistsTabComponent {
+  nodeUrl = environment.nodeUrl;
   intervalSeconds = 0;
   progressSpinner = 95;
   followers: number = 90000000;
@@ -44,7 +46,7 @@ export class CardArtistsTabComponent {
   getArtistInformation(){
     if (this.artistArray){
       var artists = this.artistArray.join("|")
-      const url = `http://localhost:3000/api/spotify?artists=${artists}`;
+      const url = `${this.nodeUrl}/api/spotify?artists=${artists}`;
       // const url = `http://localhost:3000/api/spotify?artists=Maroon 5`;
       // const url = `http://localhost:3000/api/spotify?artists=rahul dravid`;
       console.log(url)
@@ -71,7 +73,7 @@ export class CardArtistsTabComponent {
             currentArtist['popularity'] = data?.popularity;
             currentArtist['external_urls'] = data?.external_urls?.spotify
             currentArtist['dp'] = data?.images[0]?.url
-            const urlForAlbums = `http://localhost:3000/api/spotify/topAlbums?artistId=${data?.id}`;
+            const urlForAlbums = `${this.nodeUrl}/api/spotify/topAlbums?artistId=${data?.id}`;
             let albumsData = this.http.get<any>(urlForAlbums);
             albumsData.subscribe((data2) => {
               // console.log("<<<<<<<<<<<<<<<<<<<< INSIDE ALBUMS DATA: >>>>>>>>>>>>>>>>>>>>>>>>>>")

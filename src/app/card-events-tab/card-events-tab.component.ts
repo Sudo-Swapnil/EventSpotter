@@ -1,12 +1,15 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-card-events-tab',
   templateUrl: './card-events-tab.component.html',
   styleUrls: ['./card-events-tab.component.css']
 })
 export class CardEventsTabComponent {
+  nodeUrl = environment.nodeUrl;
   @Input() eventId: string;
   @Output() artistsArray = new EventEmitter<any>();
   faTwitter = faTwitter;
@@ -36,7 +39,7 @@ export class CardEventsTabComponent {
     // const url = `http://localhost:3000/api/getTableInformation${queryParams}`;
     
     
-    const eventCardUrl = `http://localhost:3000/api/getEventInfo?eventId=${this.eventId}`;
+    const eventCardUrl = `${this.nodeUrl}/api/getEventInfo?eventId=${this.eventId}`;
     console.log("#### EventsCardUrl: ", eventCardUrl);
     
     // const url = `http://localhost:3000/api/tkm?keyword=${this.eventId}`;
