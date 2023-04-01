@@ -4,6 +4,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { debounceTime, tap, switchMap, finalize, distinctUntilChanged, filter } from 'rxjs/operators';
 
+
+import { environment } from '../../environments/environment';
+
 const API_KEY = "ded27983"
 
 @Component({
@@ -12,7 +15,7 @@ const API_KEY = "ded27983"
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit{
-
+  nodeUrl = environment.nodeUrl;
   filteredEvents: any;
   isLoading = false;
   errorMsg: string;
@@ -56,8 +59,7 @@ export class SearchComponent implements OnInit{
         this.filteredEvents = [];
         this.isLoading = true;
       }),
-      // switchMap(value => this.http.get('http://www.omdbapi.com/?apikey=' + API_KEY + '&s=' + value)
-      switchMap(value => this.http.get('http://localhost:3000/api/typeAhead?value=' + value)
+      switchMap(value => this.http.get(`${this.nodeUrl}/api/typeAhead?value=` + value)
         .pipe(
           finalize(() => {
             this.isLoading = false
@@ -117,7 +119,7 @@ export class SearchComponent implements OnInit{
   makeGetRequest(){
     const formValues = this.eventsForm.value;
     const queryParams = `?keyword=${formValues.keyword}&distance=${formValues.distance}&location=${formValues.location}&category=${formValues.category}&checkbox=${formValues.checkbox}&autolocation=${this.autoLocation}`;
-    const url = `http://localhost:3000/api/getTableInformation${queryParams}`;
+    const url = `${this.nodeUrl}/api/getTableInformation${queryParams}`;
     console.log("QUERY PARAMS BELOW: ")
     console.log(queryParams)
     // const url = `http://localhost:3000/test/sort`;
