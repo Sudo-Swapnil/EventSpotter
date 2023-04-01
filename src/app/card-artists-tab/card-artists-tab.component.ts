@@ -58,6 +58,13 @@ export class CardArtistsTabComponent {
         if(dataOfArtists){
           dataOfArtists.forEach(data => {
             console.log("ARTIST DATA: ", data)
+            console.log(this.artistArray)
+            let isArtistPresent = this.artistArray.map(item => item.toLowerCase()).includes(data?.name.toLowerCase());
+            console.log(isArtistPresent)
+            if (!isArtistPresent){
+              console.log("Artist name does not match with spotify name")
+              return
+            }
             let currentArtist = {}
             currentArtist['name'] = data?.name;
             currentArtist['followers'] = Number(data?.followers?.total).toLocaleString('en-US');
