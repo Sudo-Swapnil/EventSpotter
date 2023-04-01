@@ -76,5 +76,7 @@
     </div>
     </form>
     <app-events-table *ngIf="eventsTableData" [eventsTableData]="eventsTableData"></app-events-table>
-    
+    <div *ngIf="requestMade && !eventsTableData" class="mt-5">
+        <div class="no-events-data text-center">No results available</div>
+    </div>
 </div>

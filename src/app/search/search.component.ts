@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit{
   minLength = 3;
   selectedEvent: any = "";
   autoLocation: string = '';
+  requestMade: boolean = false;
 
   constructor (private http: HttpClient) {}
 
@@ -127,7 +128,8 @@ export class SearchComponent implements OnInit{
     let result = this.http.get<any>(url)
     console.log(result.subscribe((data) => {
       console.log("This is the data: ", data)
-      this.eventsTableData = data
+      this.eventsTableData = data;
+      this.requestMade = true;
     }))
     console.log("Request complete...")
   }
@@ -138,5 +140,6 @@ export class SearchComponent implements OnInit{
     this.eventsTableData = '';
     this.autoLocation = '';
     this.eventsForm.controls['distance'].setValue('10')
+    this.requestMade = false;
   }
 }

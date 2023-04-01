@@ -41,3 +41,11 @@
     content: "*";
     color: red;
 }
+
+
+.no-events-data{
+    background-color: white;
+    color: red;
+    margin: 0 auto;
+    border-radius: 30px;
+}
