@@ -25,7 +25,7 @@
                     <div class="restricted-show-container" [class.show]="showVenueHours">
                         {{ venueOpenHours }}
                     </div>
-                    <button class="show-btn" *ngIf="venueOpenHours.length > 100" (click)="showVenueHours = !showVenueHours">
+                    <button class="show-btn" *ngIf="venueOpenHours.length > 290" (click)="showVenueHours = !showVenueHours">
                         {{ showVenueHours ? 'Show less': 'Show More' }}
                     </button>
                 </span>
@@ -37,7 +37,7 @@
                     <div class="restricted-show-container" [class.show]="showVenueGeneralRules">
                         {{ venueGeneralRule }}
                     </div>
-                    <button class="show-btn" *ngIf="venueGeneralRule.length > 100" (click)="showVenueGeneralRules = !showVenueGeneralRules">
+                    <button class="show-btn" *ngIf="venueGeneralRule.length > 290" (click)="showVenueGeneralRules = !showVenueGeneralRules">
                         {{ showVenueGeneralRules ? 'Show less': 'Show More' }}
                     </button>
                 </span>
@@ -49,7 +49,7 @@
                     <div class="restricted-show-container" [class.show]="showVenueChildRules">
                         {{ venueChildRule }}
                     </div>
-                    <button class="show-btn" *ngIf="venueChildRule.length > 100" (click)="showVenueChildRules = !showVenueChildRules">
+                    <button class="show-btn" *ngIf="venueChildRule.length > 290" (click)="showVenueChildRules = !showVenueChildRules">
                         {{ showVenueChildRules ? 'Show less': 'Show More' }}
                     </button>
                 </span>

@@ -12,7 +12,7 @@
             <input class="form-control" matInput [(ngModel)]="selectedEvent" [matAutocomplete]="auto"
                     [formControl]="eventsForm.controls['keyword']" required>
       
-            <mat-autocomplete [panelWidth]="400" #auto="matAutocomplete" (optionSelected)="onSelectedEvent()"
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectedEvent()"
             [displayWith]="displayWith">
             <!-- <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option> -->
             <mat-option *ngIf="isLoading" class="is-loading">

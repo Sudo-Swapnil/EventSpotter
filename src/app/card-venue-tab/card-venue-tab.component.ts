@@ -31,37 +31,6 @@ export class CardVenueTabComponent {
 
   ngOnInit(){
     this.getVenueInformation()
-    // let favTest = [
-    //   {
-    //     "Date": "2023-03-20",
-    //     "Event": "Concert",
-    //     "Category": "Music",
-    //     "Venue": "Madison Square Garden",
-    //     "Favorite": true
-    //   },
-    //   {
-    //     "Date": "2023-04-02",
-    //     "Event": "Basketball Game",
-    //     "Category": "Sports",
-    //     "Venue": "Barclays Center",
-    //     "Favorite": false
-    //   },
-    //   {
-    //     "Date": "2023-04-15",
-    //     "Event": "Musical",
-    //     "Category": "Theater",
-    //     "Venue": "Broadway Theatre",
-    //     "Favorite": true
-    //   },
-    //   {
-    //     "Date": "2023-05-01",
-    //     "Event": "Comedy Show",
-    //     "Category": "Entertainment",
-    //     "Venue": "Comedy Cellar",
-    //     "Favorite": false
-    //   }
-    // ]
-    // localStorage.setItem("favoriteEvents", JSON.stringify(favTest)); //TODO remove this
   }
 
   getVenueInformation(){
