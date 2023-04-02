@@ -34,7 +34,7 @@
   
   
   <!-- add card component selector based on show_card variable -->
-  <div *ngIf="showCard">
+  <div *ngIf="showCard" class="pb-5">
     <app-card [sRowData]="slRowData" (backBtnClicked)="onBackClick($event)"></app-card>
   </div>
 </div>
