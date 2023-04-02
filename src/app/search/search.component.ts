@@ -7,7 +7,6 @@ import { debounceTime, tap, switchMap, finalize, distinctUntilChanged, filter } 
 
 import { environment } from 'src/environments/environment';
 
-const API_KEY = "ded27983"
 
 @Component({
   selector: 'app-search',

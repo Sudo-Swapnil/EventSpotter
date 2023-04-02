@@ -7,9 +7,7 @@
         <div class="pb-5 pt-2 text-center card-title-div">
             <span>
                 {{ cardTitle }}
-                <!-- <mat-icon class="red-icon">favorite</mat-icon>  -->
                 <div class="wrapper-favourite">
-                    <!-- <fa-icon [icon]="faHeart" class="fav-color"></fa-icon> -->
                     <mat-icon *ngIf="!isFavorite" (click)="setFavorite()" style="color:black" class="fav-icon">favorite_border</mat-icon> 
                     <mat-icon *ngIf="isFavorite" (click)="unsetFavorite()" class="red-icon fav-icon">favorite</mat-icon> 
                 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-events-table',
@@ -11,24 +11,24 @@ export class EventsTableComponent {
 
   showCard = false;
   slRowData: any;
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['eventsTableData']){
+      this.showCard = false;
+    }
+  }
+
   onBackClick(value: boolean){
     this.showCard = value
-    console.log("In parent component: got value: ", value)
+    // console.log("In parent component: got value: ", value)
   }
 
   onTableRowClick(rowData: any){
     console.log(rowData)
     this.slRowData = rowData
-    console.log("Setting card view ON")
+    // console.log("Setting card view ON")
     this.showCard = true;
 
   }
-
-  // fun(row)
-  // call api using row.id information
-  // data <- from API
-  // show_card = false initially
-  // if data then show_card = true
-  //  
 
 }

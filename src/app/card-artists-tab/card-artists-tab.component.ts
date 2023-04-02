@@ -16,12 +16,6 @@ export class CardArtistsTabComponent {
   followers: number = 90000000;
   
   @Input() artistArray: any;
-
-  images = [
-    {title: 'First Slide', short: 'First Slide Short', src: "https://picsum.photos/id/700/900/500"},
-    {title: 'Second Slide', short: 'Second Slide Short', src: "https://picsum.photos/id/1011/900/500"},
-    {title: 'Third Slide', short: 'Third Slide Short', src: "https://picsum.photos/id/984/900/500"}
-  ];
   
   artistsApiData = [];
 
