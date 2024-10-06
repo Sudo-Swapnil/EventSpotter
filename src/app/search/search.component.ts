@@ -99,7 +99,6 @@ export class SearchComponent implements OnInit{
         this.autoLocation = '';
       }
     })
-
   }
 
   eventsTableData: any;

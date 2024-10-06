@@ -53,7 +53,7 @@ export class CardEventsTabComponent {
       this.eventsData = data
       this.eventDateTime = this.eventsData?.dates?.start?.localDate
       
-      
+      // TODO
       const artistNames = this.eventsData?._embedded?.attractions?.map(attraction => attraction.name);
 
       this.artistsArray.emit(artistNames);
